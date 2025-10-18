@@ -1,0 +1,15 @@
+{
+  "editor.wordWrap": "on",
+  "markdown.extension.toc.levels": "2..4",
+  "markdown-preview-enhanced.liveUpdate": true,
+  "markdown-preview-enhanced.scrollSync": true,
+  "markdown-preview-enhanced.previewTheme": "github-light.css",
+  "markdown-preview-enhanced.enableScriptExecution": true,
+  "markdown-preview-enhanced.pdfOptions": {
+    "format": "A4",
+    "printBackground": true,
+    "outline": true
+  },
+"pasteImage.path": "${currentFileDir}/images",
+"pasteImage.namePrefix": "${currentFileNameWithoutExt}-"
+}
