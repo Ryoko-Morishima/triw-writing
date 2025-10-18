@@ -1,3 +1,9 @@
+---
+layout: default
+title: 目次
+---
+
+
 # Project TRIW 開発記録（仮）
 
 [TOC]
