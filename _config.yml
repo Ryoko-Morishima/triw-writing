@@ -1,3 +1,5 @@
 theme: null
 title: ""
 description: ""
+markdown: GFM
+plugins: []
