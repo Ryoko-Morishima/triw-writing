@@ -1,4 +1,0 @@
-echo "" > .nojekyll
-git add .nojekyll
-git commit -m "disable jekyll for pure markdown view"
-git push origin main

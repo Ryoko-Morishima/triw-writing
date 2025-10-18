@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: plain
 title: 開発のはじまり（7月初旬）
 ---
 

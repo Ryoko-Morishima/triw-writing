@@ -1,5 +1,5 @@
-theme: null
 title: ""
 description: ""
+theme: null         # テーマ無し（=ナビ等を出さない）
 markdown: GFM
 plugins: []

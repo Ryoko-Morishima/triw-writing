@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: plain
 title: 開発環境を整える（7月半ば）
 ---
 
