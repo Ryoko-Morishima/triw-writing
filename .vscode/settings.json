@@ -10,6 +10,9 @@
     "printBackground": true,
     "outline": true
   },
-"pasteImage.path": "${currentFileDir}/images",
-"pasteImage.namePrefix": "${currentFileNameWithoutExt}-"
+  "pasteImage.path": "${currentFileDir}/images",
+  "pasteImage.namePrefix": "${currentFileNameWithoutExt}-",
+  "markdown-preview-enhanced.customStyle": [
+    "file:///D:/work/triw/articles/preview.css"
+  ]
 }
