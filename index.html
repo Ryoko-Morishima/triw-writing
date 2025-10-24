@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AIとアプリを共同開発した話</title>
+  <style>
+    body{font:16px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;margin:24px;color:#222}
+    main{max-width:900px;margin:0 auto}
+    h1{font-size:1.8rem;margin:0 0 1rem}
+    hr{margin:2rem 0}
+    a{color:#0366d6;text-decoration:none} a:hover{text-decoration:underline}
+    pre{overflow:auto;background:#f6f8fa;padding:12px;border-radius:6px}
+    code{font-family:ui-monospace,Menlo,Consolas,monospace}
+  </style>
+</head>
+<body>
+  <main id="app"><p>読み込み中…</p></main>
+
+  <!-- Marked: クライアントで Markdown をHTML化 -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    (async () => {
+      const el = document.getElementById('app');
+      try {
+        const res = await fetch('./index.md', { cache: 'no-store' });
+        if (!res.ok) throw new Error('Markdownが見つかりません');
+        const md = await res.text();
+        // シンプルにそのまま描画（XSS対策が必要な運用でなければOK）
+        el.innerHTML = marked.parse(md);
+      } catch (e) {
+        el.innerHTML = `<p>読み込みに失敗しました: ${e.message}</p>`;
+      }
+    })();
+  </script>
+</body>
+</html>
