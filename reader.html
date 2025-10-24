@@ -8,108 +8,89 @@
   pre{overflow:auto;background:#f6f8fa;padding:12px;border-radius:6px}
   h1{font-size:1.8rem;margin:0 0 1rem}
   hr{margin:2rem 0}
-  main img {
-    display: block;               /* 余白の制御を安定 */
-    max-width: 100%;              /* はみ出し防止 */
-    height: auto;
-    border: 1px solid #c9d1d9;    /* ← 罫線（薄いグレー） */
-    border-radius: 6px;           /* 角丸（不要なら消してOK） */
-    background: #fff;             /* 透過PNGでも下地を白に */
-    box-sizing: border-box;
-    margin: 8px 0 32px;               /* 上下に余白 */
+  /* 画像の枠線＋余白（下広め） */
+  main img{
+    display:block;max-width:100%;height:auto;
+    border:1px solid #e1e4e8;border-radius:6px;background:#fff;
+    box-sizing:border-box;margin:8px 0 32px;
   }
-
-/* リンクになっている画像にも同じ枠線を適用（保険） */
-  main a > img {
-    border: 1px solid #c9d1d9;
-    border-radius: 6px;
-  }
-/* 前へ / 次へ ナビ */
-.nav-pager{
-  display:flex; justify-content:space-between; gap:12px;
-  align-items:center; margin:32px 0 8px;
-}
-.nav-pager a{
-  display:inline-block; padding:8px 12px; border:1px solid #e1e4e8;
-  border-radius:8px; text-decoration:none;
-}
-.nav-pager a:hover{ background:#f6f8fa }
-.nav-pager .spacer{ flex:1 }
-
+  main a>img{border:1px solid #e1e4e8;border-radius:6px}
+  /* 前へ / 次へ */
+  .nav-pager{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:32px 0 8px}
+  .nav-pager a{display:inline-block;padding:8px 12px;border:1px solid #e1e4e8;border-radius:8px;text-decoration:none}
+  .nav-pager a:hover{background:#f6f8fa}
+  .nav-pager .spacer{flex:1}
 </style>
 <main id="app">読み込み中…</main>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
-  const el = document.getElementById('app');
-  const file = new URLSearchParams(location.search).get('file');
+  const app = document.getElementById('app');
+  const fileParam = new URLSearchParams(location.search).get('file') || '';
+  // プロジェクトPagesのルート（/triw-writing）を安定検出
+  const pathParts = location.pathname.split('/').filter(Boolean);
+  const repoRoot = pathParts.length ? '/' + pathParts[0] : '';
 
-  function cleanMarkdown(md) {
+  // 章ファイルが指定されていない時はエラー
+  if(!fileParam){
+    app.textContent = 'エラー: file パラメータが必要です（例: reader.html?file=triw-dev-history/01_zenya.md）';
+  }
+
+  function cleanMarkdown(md){
+    // YAML front matter
     if (/^---\s*\r?\n/.test(md)) md = md.replace(/^---\s*[\s\S]*?\r?\n---\s*\r?\n?/, '');
+    // 先頭に残ったlayout/title行
     md = md.replace(/^(?:layout:.*|title:.*)\s*\r?\n/gi, '');
+    // [TOC]
     md = md.replace(/^\s*\[TOC\]\s*$/gmi, '');
     return md.trimStart();
   }
 
-  (async () => {
-    try {
-      if (!file) throw new Error("file パラメータが必要です");
-      const res = await fetch(file, { cache: 'no-store' });
-      if (!res.ok) throw new Error(`取得失敗: ${file}`);
-      const base = new URL(file, location.href);      // ← 章ファイルの場所
-      const md = cleanMarkdown(await res.text());
-      el.innerHTML = marked.parse(md);
-
-      // 1) a要素のリンク補正（.md は自分で開く）
-      [...el.querySelectorAll('a[href]')].forEach(a => {
-        const href = a.getAttribute('href');
-        if (!href || href.startsWith('#') || /^https?:/i.test(href)) return;
-        const url = new URL(href, base);
-        if (url.pathname.endsWith('.md')) {
-          a.href = `${location.pathname}?file=${decodeURIComponent(url.pathname.replace(/^\/triw-writing\//,'')).replace(/^\//,'')}`;
-        } else {
-          a.href = url.href; // 絶対URLに正規化
-        }
-      });
-
-      // 2) 画像のsrc補正（章ファイル基準で絶対URLに）
-      [...el.querySelectorAll('img[src]')].forEach(img => {
-        try {
-          const src = img.getAttribute('src');
-          if (!src || /^https?:/i.test(src) || src.startsWith('data:')) return;
-          const url = new URL(src, base);
-          img.src = url.href;
-          img.loading = 'lazy';
-          img.decoding = 'async';
-        } catch {}
-      });
-    } catch (e) {
-      el.innerHTML = `<p>エラー: ${e.message}</p>`;
-    }
-      async function loadTocList(repoRoot) {
-    const res = await fetch(`${repoRoot}/index.md`, { cache: 'no-store' });
-    if (!res.ok) throw new Error('index.md を取得できませんでした');
-    const text = await res.text();
-    // 目次セクションの [text](path.md) を抽出
-    const mdLinks = [...text.matchAll(/\[([^\]]+)\]\(([^)]+\.md)\)/g)]
-      .map(m => ({ title: m[1], path: m[2].replace(/^\.\//,'') }));
-    // 同じ章が重複しても一意に
-    const seen = new Set();
-    const toc = mdLinks.filter(x => {
-      const k = x.path;
-      if (seen.has(k)) return false;
-      seen.add(k);
-      return true;
-    });
-    return toc;
+  async function fetchText(url){
+    const res = await fetch(url, { cache: 'no-store' });
+    if(!res.ok) throw new Error(`取得失敗: ${url} (${res.status})`);
+    return res.text();
   }
 
-  // 前後リンクを作って挿入
-  function insertPrevNext(toc, currentPath, repoRoot) {
-    const idx = toc.findIndex(x => x.path === currentPath);
-    if (idx === -1) return;
-    const prev = idx > 0 ? toc[idx - 1] : null;
-    const next = idx < toc.length - 1 ? toc[idx + 1] : null;
+  async function loadTocList(){
+    // 目次は /<repo>/index.md を見る
+    const tocUrl = `${repoRoot}/index.md`;
+    const raw = await fetchText(tocUrl);
+    const links = [...raw.matchAll(/\[([^\]]+)\]\(([^)]+\.md)\)/g)]
+      .map(m => ({ title: m[1], path: m[2].replace(/^\.\//,'') }));
+    // 一意化
+    const seen = new Set();
+    return links.filter(x => !seen.has(x.path) && seen.add(x.path) === true);
+  }
 
+  function rewriteLinksAndImages(container, chapterBaseUrl){
+    // a要素：.md は自分（reader.html）で開く。他は絶対URLに正規化
+    container.querySelectorAll('a[href]').forEach(a=>{
+      const href = a.getAttribute('href');
+      if(!href || href.startsWith('#') || /^https?:/i.test(href)) return;
+      const url = new URL(href, chapterBaseUrl);
+      if(url.pathname.endsWith('.md')){
+        const rel = url.pathname.replace(new RegExp('^' + repoRoot + '/'), '').replace(/^\//,'');
+        a.href = `${repoRoot}/reader.html?file=${encodeURIComponent(rel)}`;
+      }else{
+        a.href = url.href;
+      }
+    });
+    // img要素：章基準で絶対URLに
+    container.querySelectorAll('img[src]').forEach(img=>{
+      const src = img.getAttribute('src');
+      if(!src || /^https?:/i.test(src) || src.startsWith('data:')) return;
+      const url = new URL(src, chapterBaseUrl);
+      img.src = url.href;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+    });
+  }
+
+  function insertPrevNext(toc, currentPath){
+    const i = toc.findIndex(x => x.path === currentPath);
+    if(i < 0) return;
+    const prev = i > 0 ? toc[i-1] : null;
+    const next = i < toc.length - 1 ? toc[i+1] : null;
     const nav = document.createElement('nav');
     nav.className = 'nav-pager';
     nav.innerHTML = `
@@ -117,33 +98,29 @@
       <span class="spacer"></span>
       ${next ? `<a href="${repoRoot}/reader.html?file=${encodeURIComponent(next.path)}">${next.title} →</a>` : `<span></span>`}
     `;
-    // 上と下に挿入
-    const main = document.getElementById('app');
-    main.prepend(nav.cloneNode(true));
-    main.appendChild(nav);
+    app.prepend(nav.cloneNode(true));
+    app.appendChild(nav);
   }
 
   (async () => {
-    // 既存のレンダリング処理の中で…
-    // base, md の描画などはそのまま
-    // 例）el.innerHTML = marked.parse(md);
+    try{
+      const chapterPath = fileParam.replace(/^\/?triw-writing\//,'').replace(/^\//,'');
+      const chapterUrl = new URL(chapterPath, location.origin + repoRoot + '/'); // 章の基準URL
+      const raw = await fetchText(chapterUrl.href);
+      const md = cleanMarkdown(raw);
+      app.innerHTML = marked.parse(md);
+      rewriteLinksAndImages(app, chapterUrl);
 
-    // repo ルート（/triw-writing）を算出
-    const parts = location.pathname.split('/').filter(Boolean);
-    const repoRoot = parts.length ? '/' + parts[0] : '';
-
-    // 現在の章ファイルの相対パス（/triw-writing/ を除去）
-    const fileParam = new URLSearchParams(location.search).get('file') || '';
-    const currentPath = fileParam.replace(/^\/?triw-writing\//,'').replace(/^\//,'');
-
-    try {
-      const toc = await loadTocList(repoRoot);
-      insertPrevNext(toc, currentPath, repoRoot);
-    } catch (e) {
-      console.warn('前後リンク生成をスキップ:', e);
+      // 目次を読んで前後リンク
+      try{
+        const toc = await loadTocList();
+        insertPrevNext(toc, chapterPath, repoRoot);
+      }catch(e){
+        console.warn('前後リンク生成をスキップ:', e.message);
+      }
+    }catch(e){
+      app.innerHTML = `<p>エラー: ${e.message}</p>`;
     }
   })();
-
 </script>
-
 </html>
