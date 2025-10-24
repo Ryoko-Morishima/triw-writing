@@ -31,22 +31,48 @@
       } catch (e) {
         el.innerHTML = `<p>読み込みに失敗しました: ${e.message}</p>`;
       }
-    })();
-   const rootPath = location.pathname.replace(/\/index\.html?$/,''); // /triw-writing
-document.getElementById('app').addEventListener('click', e=>{
-  const a = e.target.closest('a[href]');
-  if(!a) return;
-  const href = a.getAttribute('href');
-  if(!href || href.startsWith('#') || /^https?:/.test(href)) return;
-  // .md へのリンクは reader.html に差し替える
-  if (href.endsWith('.md')) {
-    e.preventDefault();
-    const url = new URL(href, location.href);
-    // /triw-writing/ を取り除いた相対パスにして渡す
-    const rel = url.pathname.replace(/^\/triw-writing\//,'').replace(/^\//,'');
-    location.href = `${rootPath}/reader.html?file=${encodeURIComponent(rel)}`;
+ <!-- すでに marked で md を描画した直後に追加/置換 ↓ -->
+<script>
+  // repo ルート（例: /triw-writing）を求める
+  const parts = location.pathname.split('/').filter(Boolean);
+  const repoRoot = parts.length ? '/' + parts[0] : '';
+
+  function rewriteMdLinks(container) {
+    const base = new URL(location.href);
+    container.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href || href.startsWith('#') || /^https?:/i.test(href)) return;
+
+      const url = new URL(href, base);
+      if (url.pathname.endsWith('.md')) {
+        const rel = url.pathname.replace(new RegExp('^' + repoRoot + '/'), '').replace(/^\//, '');
+        a.setAttribute('href', `${repoRoot}/reader.html?file=${encodeURIComponent(rel)}`);
+      } else {
+        a.setAttribute('href', url.href);
+      }
+    });
   }
-}, true); 
-  </script>
+
+  const appEl = document.getElementById('app');
+  rewriteMdLinks(appEl);
+
+  // ←ここを修正
+  appEl.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    const href = a.getAttribute('href');
+    if (!href) return;
+    // すでに ?file= なら何もしない
+    if (/\?file=/.test(href)) return;
+
+    // .md への生リンクをフォールバックで差し替え
+    if (href.endsWith('.md')) {
+      e.preventDefault();
+      const url = new URL(href, location.href);
+      const rel = url.pathname.replace(new RegExp('^' + repoRoot + '/'), '').replace(/^\//, '');
+      location.href = `${repoRoot}/reader.html?file=${encodeURIComponent(rel)}`;
+    }
+  }, true);
+</script>
 </body>
 </html>
