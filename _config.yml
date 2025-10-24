@@ -1,9 +1,3 @@
-title: ""
-description: ""
-theme: null
-
-# ← ここがポイント。GFMを直接は使えない
-markdown: kramdown
-kramdown:
-  input: GFM   # GitHub風の記法（表やチェックボックス等）を許可
-plugins: []
+git add _config.yml
+git commit -m "chore(pages): minimal config (kramdown + GFM)"
+git push origin main
