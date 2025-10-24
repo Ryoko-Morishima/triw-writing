@@ -16,13 +16,8 @@
   const file = new URLSearchParams(location.search).get('file');
 
   function cleanMarkdown(md) {
-    // 1) 先頭の YAML フロントマター --- ... --- を除去
-    if (/^---\s*\r?\n/.test(md)) {
-      md = md.replace(/^---\s*[\s\S]*?\r?\n---\s*\r?\n?/, '');
-    }
-    // 2) 念のため、先頭に単独で残った layout:/title: 行も除去
+    if (/^---\s*\r?\n/.test(md)) md = md.replace(/^---\s*[\s\S]*?\r?\n---\s*\r?\n?/, '');
     md = md.replace(/^(?:layout:.*|title:.*)\s*\r?\n/gi, '');
-    // 3) [TOC] を除去
     md = md.replace(/^\s*\[TOC\]\s*$/gmi, '');
     return md.trimStart();
   }
@@ -32,23 +27,32 @@
       if (!file) throw new Error("file パラメータが必要です");
       const res = await fetch(file, { cache: 'no-store' });
       if (!res.ok) throw new Error(`取得失敗: ${file}`);
-      const raw = await res.text();
-      const md = cleanMarkdown(raw);
+      const base = new URL(file, location.href);      // ← 章ファイルの場所
+      const md = cleanMarkdown(await res.text());
       el.innerHTML = marked.parse(md);
 
-      // 相対リンクを章ファイル基準に補正し、.mdはreader.htmlで開く
-      const base = new URL(file, location.href);
+      // 1) a要素のリンク補正（.md は自分で開く）
       [...el.querySelectorAll('a[href]')].forEach(a => {
         const href = a.getAttribute('href');
         if (!href || href.startsWith('#') || /^https?:/i.test(href)) return;
         const url = new URL(href, base);
         if (url.pathname.endsWith('.md')) {
-          a.href = `${location.pathname}?file=${decodeURIComponent(
-            url.pathname.replace(/^\/triw-writing\//, '').replace(/^\//,'')
-          )}`;
+          a.href = `${location.pathname}?file=${decodeURIComponent(url.pathname.replace(/^\/triw-writing\//,'')).replace(/^\//,'')}`;
         } else {
-          a.href = url.href;
+          a.href = url.href; // 絶対URLに正規化
         }
+      });
+
+      // 2) 画像のsrc補正（章ファイル基準で絶対URLに）
+      [...el.querySelectorAll('img[src]')].forEach(img => {
+        try {
+          const src = img.getAttribute('src');
+          if (!src || /^https?:/i.test(src) || src.startsWith('data:')) return;
+          const url = new URL(src, base);
+          img.src = url.href;
+          img.loading = 'lazy';
+          img.decoding = 'async';
+        } catch {}
       });
     } catch (e) {
       el.innerHTML = `<p>エラー: ${e.message}</p>`;
