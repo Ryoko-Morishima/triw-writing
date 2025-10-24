@@ -14,26 +14,46 @@
 <script>
   const el = document.getElementById('app');
   const file = new URLSearchParams(location.search).get('file');
+
+  function cleanMarkdown(md) {
+    // 1) 先頭の YAML フロントマター --- ... --- を除去
+    if (/^---\s*\r?\n/.test(md)) {
+      md = md.replace(/^---\s*[\s\S]*?\r?\n---\s*\r?\n?/, '');
+    }
+    // 2) 念のため、先頭に単独で残った layout:/title: 行も除去
+    md = md.replace(/^(?:layout:.*|title:.*)\s*\r?\n/gi, '');
+    // 3) [TOC] を除去
+    md = md.replace(/^\s*\[TOC\]\s*$/gmi, '');
+    return md.trimStart();
+  }
+
   (async () => {
     try {
-      if(!file) throw new Error("file パラメータが必要です");
+      if (!file) throw new Error("file パラメータが必要です");
       const res = await fetch(file, { cache: 'no-store' });
       if (!res.ok) throw new Error(`取得失敗: ${file}`);
-      el.innerHTML = marked.parse(await res.text());
-      // 相対リンクの基準を章ファイルのディレクトリに寄せる
+      const raw = await res.text();
+      const md = cleanMarkdown(raw);
+      el.innerHTML = marked.parse(md);
+
+      // 相対リンクを章ファイル基準に補正し、.mdはreader.htmlで開く
       const base = new URL(file, location.href);
-      [...el.querySelectorAll('a[href]')].forEach(a=>{
+      [...el.querySelectorAll('a[href]')].forEach(a => {
         const href = a.getAttribute('href');
-        if (!href || href.startsWith('#') || /^https?:/.test(href)) return;
+        if (!href || href.startsWith('#') || /^https?:/i.test(href)) return;
         const url = new URL(href, base);
-        // .md なら自分（reader.html）で開く
         if (url.pathname.endsWith('.md')) {
-          a.href = `${location.pathname}?file=${decodeURIComponent(url.pathname.replace(/^\/triw-writing\//,''))}`;
+          a.href = `${location.pathname}?file=${decodeURIComponent(
+            url.pathname.replace(/^\/triw-writing\//, '').replace(/^\//,'')
+          )}`;
         } else {
           a.href = url.href;
         }
       });
-    } catch(e) { el.innerHTML = `<p>エラー: ${e.message}</p>`; }
+    } catch (e) {
+      el.innerHTML = `<p>エラー: ${e.message}</p>`;
+    }
   })();
 </script>
+
 </html>
