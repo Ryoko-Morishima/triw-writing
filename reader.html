@@ -8,6 +8,23 @@
   pre{overflow:auto;background:#f6f8fa;padding:12px;border-radius:6px}
   h1{font-size:1.8rem;margin:0 0 1rem}
   hr{margin:2rem 0}
+  main img {
+    display: block;               /* 余白の制御を安定 */
+    max-width: 100%;              /* はみ出し防止 */
+    height: auto;
+    border: 1px solid #e1e4e8;    /* ← 罫線（薄いグレー） */
+    border-radius: 6px;           /* 角丸（不要なら消してOK） */
+    background: #fff;             /* 透過PNGでも下地を白に */
+    box-sizing: border-box;
+    margin: 8px 0 32px;               /* 上下に余白 */
+  }
+
+/* リンクになっている画像にも同じ枠線を適用（保険） */
+  main a > img {
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+  }
+
 </style>
 <main id="app">読み込み中…</main>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
