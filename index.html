@@ -32,6 +32,21 @@
         el.innerHTML = `<p>読み込みに失敗しました: ${e.message}</p>`;
       }
     })();
+   const rootPath = location.pathname.replace(/\/index\.html?$/,''); // /triw-writing
+document.getElementById('app').addEventListener('click', e=>{
+  const a = e.target.closest('a[href]');
+  if(!a) return;
+  const href = a.getAttribute('href');
+  if(!href || href.startsWith('#') || /^https?:/.test(href)) return;
+  // .md へのリンクは reader.html に差し替える
+  if (href.endsWith('.md')) {
+    e.preventDefault();
+    const url = new URL(href, location.href);
+    // /triw-writing/ を取り除いた相対パスにして渡す
+    const rel = url.pathname.replace(/^\/triw-writing\//,'').replace(/^\//,'');
+    location.href = `${rootPath}/reader.html?file=${encodeURIComponent(rel)}`;
+  }
+}, true); 
   </script>
 </body>
 </html>
