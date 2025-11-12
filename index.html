@@ -3,94 +3,69 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>AIとアプリを共同開発した話</title>
+  <title>AIとアプリを共同開発した話 - Project TRIW 開発記録</title>
   <style>
-    body{font:16px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;margin:24px;color:#222}
-    main{max-width:900px;margin:0 auto}
-    h1{font-size:1.8rem;margin:0 0 1rem}
-    hr{margin:2rem 0}
-    a{color:#0366d6;text-decoration:none} a:hover{text-decoration:underline}
-    pre{overflow:auto;background:#f6f8fa;padding:12px;border-radius:6px}
-    code{font-family:ui-monospace,Menlo,Consolas,monospace}
-    /* 画像の枠線＆見た目 */
-  main img {
-    display: block;               /* 余白の制御を安定 */
-    max-width: 100%;              /* はみ出し防止 */
-    height: auto;
-    border: 1px solid #c9d1d9;    /* ← 罫線（薄いグレー） */
-    border-radius: 6px;           /* 角丸（不要なら消してOK） */
-    background: #fff;             /* 透過PNGでも下地を白に */
-    box-sizing: border-box;
-    margin: 8px 0 32px;               /* 上下に余白 */
-  }
-
-/* リンクになっている画像にも同じ枠線を適用（保険） */
-  main a > img {
-    border: 1px solid #c9d1d9;
-    border-radius: 6px;
-  }
-
+    body {
+      font: 16px/1.7 system-ui, -apple-system, "Segoe UI", Roboto,
+            "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      margin: 24px;
+      background: #fff;
+      color: #222;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.3rem; margin-top: 2rem; }
+    hr { margin: 1.5rem 0; }
+    ol { padding-left: 1.4rem; }
+    a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-  <main id="app"><p>読み込み中…</p></main>
+  <main>
+    <h1>AIとアプリを共同開発した話</h1>
+    <p>
+      AIと一緒に生まれて初めてアプリをリリースしました。感動の体験だったのでその経緯をまとめます。<br>
+      これまで、ほぼ開発経験は皆無です。すべてをAIにききながら開発していった記録です。
+    </p>
 
-  <!-- Marked: クライアントで Markdown をHTML化 -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script>
-    (async () => {
-      const el = document.getElementById('app');
-      try {
-        const res = await fetch('./index.md', { cache: 'no-store' });
-        if (!res.ok) throw new Error('Markdownが見つかりません');
-        const md = await res.text();
-        // シンプルにそのまま描画（XSS対策が必要な運用でなければOK）
-        el.innerHTML = marked.parse(md);
-      } catch (e) {
-        el.innerHTML = `<p>読み込みに失敗しました: ${e.message}</p>`;
-      }
- <!-- すでに marked で md を描画した直後に追加/置換 ↓ -->
-<script>
-  // repo ルート（例: /triw-writing）を求める
-  const parts = location.pathname.split('/').filter(Boolean);
-  const repoRoot = parts.length ? '/' + parts[0] : '';
+    <hr>
 
-  function rewriteMdLinks(container) {
-    const base = new URL(location.href);
-    container.querySelectorAll('a[href]').forEach(a => {
-      const href = a.getAttribute('href');
-      if (!href || href.startsWith('#') || /^https?:/i.test(href)) return;
+    <h2>目次</h2>
+    <ol>
+      <li><a href="https://github.com/Ryoko-Morishima/triw-writing/blob/main/triw-dev-history/01_zenya.md">開発前夜（6月半ば～後半）</a></li>
+      <li><a href="https://github.com/Ryoko-Morishima/triw-writing/blob/main/triw-dev-history/02_1st_dev.md">開発のはじまり（7月初旬）</a></li>
+      <li><a href="https://github.com/Ryoko-Morishima/triw-writing/blob/main/triw-dev-history/03_devenv.md">開発環境を整える（7月半ば）</a></li>
+      <li><a href="https://github.com/Ryoko-Morishima/triw-writing/blob/main/triw-dev-history/04_dev1.md">いよいよ本開発スタート（7月半ば～後半）</a></li>
+      <li><a href="https://github.com/Ryoko-Morishima/triw-writing/blob/main/triw-dev-history/05_dev2.md">Spotify連携の壁（7月後半～8月上旬）</a></li>
+      <li><a href="https://github.com/Ryoko-Morishima/triw-writing/blob/main/triw-dev-history/06_dev3.md">仕切り直しからの一気に作成（8月10日）</a></li>
+      <li><a href="https://github.com/Ryoko-Morishima/triw-writing/blob/main/triw-dev-history/07_dev4.md">沼る予感からの再々起動（8月11日～25日）</a></li>
+      <li><a href="https://github.com/Ryoko-Morishima/triw-writing/blob/main/triw-dev-history/08_dev5.md">機能を絞ることにした（8月後半）</a></li>
+      <li><a href="https://github.com/Ryoko-Morishima/triw-writing/blob/main/triw-dev-history/09_dev6.md">選曲ロジックを詰めていったらまた沼にはまる（8月後半～9月後半）</a></li>
+      <li><a href="https://github.com/Ryoko-Morishima/triw-writing/blob/main/triw-dev-history/10_dev7.md">ついにリリース（9月後半～10月頭）</a></li>
+      <li><a href="https://github.com/Ryoko-Morishima/triw-writing/blob/main/triw-dev-history/20_matome.md">AIといっしょに行う開発のまとめ</a></li>
+    </ol>
 
-      const url = new URL(href, base);
-      if (url.pathname.endsWith('.md')) {
-        const rel = url.pathname.replace(new RegExp('^' + repoRoot + '/'), '').replace(/^\//, '');
-        a.setAttribute('href', `${repoRoot}/reader.html?file=${encodeURIComponent(rel)}`);
-      } else {
-        a.setAttribute('href', url.href);
-      }
-    });
-  }
+    <hr>
 
-  const appEl = document.getElementById('app');
-  rewriteMdLinks(appEl);
+    <h2>付録</h2>
+    <ul>
+      <li>使用したツール／ライブラリ一覧</li>
+      <li>開発日誌リンク</li>
+      <li>関連リソース（GitHub, Vercel URLなど）</li>
+    </ul>
 
-  // ←ここを修正
-  appEl.addEventListener('click', (e) => {
-    const a = e.target.closest('a[href]');
-    if (!a) return;
-    const href = a.getAttribute('href');
-    if (!href) return;
-    // すでに ?file= なら何もしない
-    if (/\?file=/.test(href)) return;
-
-    // .md への生リンクをフォールバックで差し替え
-    if (href.endsWith('.md')) {
-      e.preventDefault();
-      const url = new URL(href, location.href);
-      const rel = url.pathname.replace(new RegExp('^' + repoRoot + '/'), '').replace(/^\//, '');
-      location.href = `${repoRoot}/reader.html?file=${encodeURIComponent(rel)}`;
-    }
-  }, true);
-</script>
+    <p style="margin-top:2rem; font-size:0.9rem; color:#666;">
+      最終更新：手動で更新
+    </p>
+  </main>
 </body>
 </html>
