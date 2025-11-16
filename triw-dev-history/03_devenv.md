@@ -18,30 +18,38 @@
  ここまでは普通にテキストエディタでテキストファイルを作ってただけだったんですよね。私のやったことあるWebページって基本テキストファイルを作って、それをブラウザから読むっていうやつですから。一応知識としては最近のWeb開発は普通フレームワーク使うってことは知っています。でもいかんせん触ったことはない。いい機会だしやってみるのもいいかもね。わかんなくても聞けば答えてもらえるしね。
 
  まずNext.jsって何なのかを聞いてみます。
- ![](images/03_devenv-2025-10-12-18-00-00.png)
- ![](images/03_devenv-2025-10-12-18-00-45.png)
+ <img src="images/03_devenv-2025-10-12-18-00-00.png" alt="" style="border:1px solid #e1e4e8;border-radius:6px;max-width:100%;height:auto;margin:8px 0 24px;">
+
+ <img src="images/03_devenv-2025-10-12-18-00-45.png" alt="" style="border:1px solid #e1e4e8;border-radius:6px;max-width:100%;height:auto;margin:8px 0 24px;">
+
 自信満々におすすめされたので、畳みかけて聞いてみます。
 
- ![](images/03_devenv-2025-10-12-18-01-34.png)
+ <img src="images/03_devenv-2025-10-12-18-01-34.png" alt="" style="border:1px solid #e1e4e8;border-radius:6px;max-width:100%;height:auto;margin:8px 0 24px;">
+
 
  ここまで言われたらやるしかなくない？　しかしこの流れ、なんかマルチの勧誘めいてるよね。
 
 ## さらにVS Codeまで勧められる
  手順を聞きながらインストールを進めていきます。しかしインストールの過程でさらにVS Codeまで進められます。
- ![](images/03_devenv-2025-10-12-18-07-35.png)
+ <img src="images/03_devenv-2025-10-12-18-07-35.png" alt="" style="border:1px solid #e1e4e8;border-radius:6px;max-width:100%;height:auto;margin:8px 0 24px;">
+
 そして開発するならこれと言われて
-![](images/03_devenv-2025-10-12-18-09-23.png)
+<img src="images/03_devenv-2025-10-12-18-09-23.png" alt="" style="border:1px solid #e1e4e8;border-radius:6px;max-width:100%;height:auto;margin:8px 0 24px;">
+
 
  そしたら入れるしかないですよね。
 
-　![](images/03_devenv-2025-10-12-18-09-52.png)
+　<img src="images/03_devenv-2025-10-12-18-09-52.png" alt="" style="border:1px solid #e1e4e8;border-radius:6px;max-width:100%;height:auto;margin:8px 0 24px;">
+
 
 まあまあいろいろあったんですがスクショをChatGPTに貼り、解決しながらインストール完了です。
 
-![](images/03_devenv-2025-10-12-18-12-00.png)
+<img src="images/03_devenv-2025-10-12-18-12-00.png" alt="" style="border:1px solid #e1e4e8;border-radius:6px;max-width:100%;height:auto;margin:8px 0 24px;">
+
 アクセスしたら……
 
- ![](images/03_devenv-2025-10-12-18-12-20.png)
+ <img src="images/03_devenv-2025-10-12-18-12-20.png" alt="" style="border:1px solid #e1e4e8;border-radius:6px;max-width:100%;height:auto;margin:8px 0 24px;">
+
  でた。
  無理やり開発のスタートラインに立たされてしまった感がありありです。
 
@@ -58,7 +66,8 @@ next.jsで管理するファイルがHTMLとかじゃないので何が何だか
 さらに構成を整理する。
 
 そんなこんなで開発に入るための準備にかなりの時間を要する。過去ログ見たらぐちってた。
-![](images/03_devenv-2025-10-12-19-25-44.png)
+<img src="images/03_devenv-2025-10-12-19-25-44.png" alt="" style="border:1px solid #e1e4e8;border-radius:6px;max-width:100%;height:auto;margin:8px 0 24px;">
+
 ぐちると慰めてくれるのはこの段階ではかなり勇気づけられた。
 
 ## 開発プロジェクト名も決めた
@@ -74,13 +83,17 @@ next.jsで管理するファイルがHTMLとかじゃないので何が何だか
 せっかく真面目にやることになったので、それなら開発日誌も書いておこうと思いました。なんで思ったのかは今となってはわかりません。真面目にやるなら記録しようと思ったのかもしれません。
  日誌ももちろんChatGPTに書いてもらいます。
 
-![](images/03_devenv-2025-10-12-19-28-16.png)
-![](images/03_devenv-2025-10-12-19-29-01.png)
+<img src="images/03_devenv-2025-10-12-19-28-16.png" alt="" style="border:1px solid #e1e4e8;border-radius:6px;max-width:100%;height:auto;margin:8px 0 24px;">
+
+<img src="images/03_devenv-2025-10-12-19-29-01.png" alt="" style="border:1px solid #e1e4e8;border-radius:6px;max-width:100%;height:auto;margin:8px 0 24px;">
+
 
 
 
   ログ見ると、いきなり開発モードに突入して不安になってたようです。頻繁に愚痴ったり心配と言ってて、そのたびに励まされてた。
-![](images/03_devenv-2025-10-12-19-01-11.png)
-![](images/03_devenv-2025-10-12-19-01-45.png)
+<img src="images/03_devenv-2025-10-12-19-01-11.png" alt="" style="border:1px solid #e1e4e8;border-radius:6px;max-width:100%;height:auto;margin:8px 0 24px;">
+
+<img src="images/03_devenv-2025-10-12-19-01-45.png" alt="" style="border:1px solid #e1e4e8;border-radius:6px;max-width:100%;height:auto;margin:8px 0 24px;">
+
 
 いやー、改めて振り返ってみるとほんとにマルチっぽいな。でも応援されるとがんばれるのは確か。
