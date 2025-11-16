@@ -2,54 +2,76 @@
 
 ## 気軽にはじめてしまった
  ヴァイブコーディングについてはあまり調べなかった。ChatGPTにやりたいことを気軽に頼んでみることにした。まずは自分の作りたいものを書く。そのために、どういうアプリがあったらうれしいかを考えた。これはつらつらと人間が考えています。そしてそれをまとめ、実現するための手順を聞いた。
-<img src="images/02_1st_dev-2025-10-12-15-47-02.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+<div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/02_1st_dev-2025-10-12-15-47-02.png">
+</div>
 
 
 すぐ返事が返ってくる。
 
- <img src="images/02_1st_dev-2025-10-12-15-48-05.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+ <div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/02_1st_dev-2025-10-12-15-48-05.png">
+</div>
 
- <img src="images/02_1st_dev-2025-10-12-15-49-01.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+ <div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/02_1st_dev-2025-10-12-15-49-01.png">
+</div>
 
- <img src="images/02_1st_dev-2025-10-12-15-50-15.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+ <div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/02_1st_dev-2025-10-12-15-50-15.png">
+</div>
 
 
  いや、フェーズとか言われても……。えっこんなに本格的なの。ちょっと待て。ここは正直にこちらのスキルを伝えなければ。
  
 
-<img src="images/02_1st_dev-2025-10-12-15-51-37.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+<div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/02_1st_dev-2025-10-12-15-51-37.png">
+</div>
 
 
   ミニゴールっていいですね。じゃあやってみるかな。
   相談して最初に作ってみようといわれたのがこれ。
- <img src="images/02_1st_dev-2025-10-12-15-53-17.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+ <div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/02_1st_dev-2025-10-12-15-53-17.png">
+</div>
 
   
 ## 初めてのAPI
  おおーAPIがでてきた！　憧れのAPI！　API叩けるようになったらなんでもできるぞ！
  もちろんAPIなんて使ってみるのは初めてなので、APIの使い方を逐一聞きながら進める。
  HTMLファイルも出してもらってローカルに保存、ブラウザで表示すればいいらしい！
- <img src="images/02_1st_dev-2025-10-12-16-14-42.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+ <div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/02_1st_dev-2025-10-12-16-14-42.png">
+</div>
 
  
 が！動かない！
-<img src="images/02_1st_dev-2025-10-12-16-15-39.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+<div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/02_1st_dev-2025-10-12-16-15-39.png">
+</div>
 
 
  先に言えや！！！
  
-<img src="images/02_1st_dev-2025-10-12-16-16-37.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+<div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/02_1st_dev-2025-10-12-16-16-37.png">
+</div>
 
 
 ほんとだな。じゃあおすすめにします。
 
 ## 初めてのサーバー立て
  ChatGPTのいうことにゃ
-<img src="images/02_1st_dev-2025-10-12-16-19-34.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+<div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/02_1st_dev-2025-10-12-16-19-34.png">
+</div>
 
  まあそうですよね。サーバーたてなきゃ動かないよね。
  しかし5分てどこから来たのか。気軽に言うが、言われたとおりやっても動かない。このあたりからだんだんChatGPTの「5分でできます！」はあやしいと思い始めてきた。動かないといったら「Windowsだとだめかも」という。方法を聞いたら別のコマンドを教えてくれた。幸い私はpythonを入れてあったので起動した。
-<img src="images/02_1st_dev-2025-10-12-16-23-58.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+<div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/02_1st_dev-2025-10-12-16-23-58.png">
+</div>
 
 
  
@@ -66,33 +88,47 @@
 
   ファイルを作り、指定のところに置いて実行してアクセスしてみるが、まあ思った通りには動かない。次に指示されたのが「ブラウザ開発者ツールを開いて確認せよ」。もちろん、ブラウザ開発者ツールも使ったことないので、開き方から見方まで全部聞く。
   しかしまだ解決できない。エラーを究明するためにログを出させるコードも修正してほしいと言ってきた。こういうやつ↓
-  <img src="images/02_1st_dev-2025-10-12-16-38-27.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+  <div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/02_1st_dev-2025-10-12-16-38-27.png">
+</div>
 
-  <img src="images/02_1st_dev-2025-10-12-16-39-01.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+  <div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/02_1st_dev-2025-10-12-16-39-01.png">
+</div>
 
   
  とにかく、いわれたままにコードを人間が書き換え、実行して結果を伝えます。
-<img src="images/02_1st_dev-2025-10-12-16-40-04.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+<div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/02_1st_dev-2025-10-12-16-40-04.png">
+</div>
 
  ほめてくれてありがとう。んでもってこれを修正するためのコードがでて、書き換えて、というのをがんばっていきました。
 
 ## API利用開始トラブルの解決
- <img src="images/02_1st_dev-2025-10-12-16-41-12.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+ <div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/02_1st_dev-2025-10-12-16-41-12.png">
+</div>
 
  きりがない……。
  こんな感じで延々続くエラーをつぶしていきます。API使うのたいへんですね。
  結局の結論は。
- <img src="images/02_1st_dev-2025-10-12-16-43-46.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+ <div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/02_1st_dev-2025-10-12-16-43-46.png">
+</div>
 
  こんなんわかるか。これ、普通に自分でやってたら絶対解決できなかったと思います。そのあと、サポートページで解除するための方法と申請文も出してくれて、さらにそのあとのやり取りも頼んで解決しました。
- <img src="images/02_1st_dev-2025-10-12-16-47-57.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+ <div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/02_1st_dev-2025-10-12-16-47-57.png">
+</div>
 
  
 
 ##　テキストからの音声生成を実現する
  さて、APIの利用ができるように準備が整ったので、本筋の開発を続けます。目的は音声ファイルを生成するところまででした。
  具体的にどうやって音声化するかをまず相談します。
- <img src="images/02_1st_dev-2025-10-12-16-54-02.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+ <div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/02_1st_dev-2025-10-12-16-54-02.png">
+</div>
 
  Google Cloud　TTS APIを使うことにします。すでにOpenAIのAPIを使うときにエラーを解決した経験があるのでここはわりとすいすいとエラーを解決できました。
 
@@ -102,11 +138,15 @@ ChatGPTのプロンプトの問題なので、プロンプトを試行錯誤し�
   
 ## UIもつけてみる。動いた！
  エラーが解決できたので、全体で動かしてみることにします。HTMLを出してもらってファイルに保存、さてブラウザからアクセス。
- <img src="image.png" alt="alt text" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+ <div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="image.png">
+</div>
 
  どうやらいっぱつで動いた模様
  
-<img src="images/02_1st_dev-2025-10-12-17-18-52.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+<div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/02_1st_dev-2025-10-12-17-18-52.png">
+</div>
 
     
  まあまあ苦労したものの、結構すんなりと進みました。とにかくやるべきことをどんどん教えてくれるので、それに従って行けばうまくいくような気がしていました。なんつってもAPI使えるようになったしね！　夢が膨らみます。

@@ -7,14 +7,18 @@
    たしか曲を読み込めるPodキャストがあったはずなので、台本つくればいいんじゃないかと考えた。
    まずプレイリストの曲名とアーティスト名を抜き出す方法を考えた。
      プレイリストのURLを貼ってテキスト化を頼んだがうまくいかない。どうしたらいいかChatGPTに聞いたらキャプチャ画像を貼れという返事が。なるほど、OCRができるのか。
-     <img src="images/01_zenya-2025-10-12-15-06-50.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+     <div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/01_zenya-2025-10-12-15-06-50.png">
+</div>
 
   
 
  
   - 各曲の概要やエピソードをまとめ、紹介用の台本を生成
   こういうのはおそらくAIが得意な分野なので、ここでChatGPTを使ってみようと思った。ChatGPTの過去ログを見ると、まず各曲の資料作成を行い、それを基に各曲の紹介文を生成させていた。このあたりよく覚えてないけど、どんな紹介ナレーションがうれしいかを考えていたようだ。曲名とアーティスト名は必須、あとは曲の一節を抜き出すとかグループの国とか、特徴的なエピソードとか。そのためにたぶん基礎資料を作るという手法になったんじゃないかな。結構ナレーションっぽい文章を作らせるのに四苦八苦している。
-  <img src="images/01_zenya-2025-10-12-15-14-17.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+  <div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/01_zenya-2025-10-12-15-14-17.png">
+</div>
 
 
 
@@ -26,7 +30,9 @@
      しかたなく、1曲ずつ解説ナレーション音声を作って交互に再生させる方針に変更した。
      プレイリストで対応。なんかそれらしくなった。
      Facebookの履歴↓
-     <img src="images/01_zenya-2025-10-12-15-34-12.png" alt="" style="display:block;border:1px solid #4a5a78;border-radius:0;max-width:100%;height:auto;margin:8px 0 24px;">
+     <div style="border:1px solid #4a5a78; padding:4px; margin:8px 0 24px;">
+  <img src="images/01_zenya-2025-10-12-15-34-12.png">
+</div>
 
 
 ##   よし、本格的にやるか
