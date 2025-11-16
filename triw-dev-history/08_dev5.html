@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>8. 機能を絞ることにした（8月後半） - Project TRIW 開発記録</title>
+
+  <style>
+    body {
+      font: 16px/1.7 system-ui, -apple-system, "Segoe UI", Roboto,
+            "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      margin: 24px;
+      background: #fff;
+      color: #222;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.3rem; margin-top: 2rem; }
+    hr { margin: 1.5rem 0; }
+    p { margin: 0 0 1em; }
+    ul { padding-left: 1.4rem; margin: 0 0 1em; }
+    li { margin-bottom: 0.3em; }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .img-box {
+      border: 1px solid #4a5a78;
+      padding: 4px;
+      margin: 8px 0 24px;
+    }
+
+    nav {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    nav a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main>
+
+    <h1>8. 機能を絞ることにした（8月後半）</h1>
+
+    <h2>DJによる選択機能を詰めていく</h2>
+    <p>
+      新たに思いついた DJペルソナ機能が行けそうかを試してみることにします。
+      これ、LLMが選ぶわけだから、ChatGPTを相手にテストすりゃいいわけです。
+      というわけで机上テストをまず行います。プロンプトを投げるテストだけを単体で行います。
+      これはべつにコードいらないからすぐできる。そしたらけっこうこれがいけそうでおもしろそうなことがわかりました。
+    </p>
+
+    <p>
+      次にコードを出してもらい、実際にローカルサーバーで動かしながらテストを進めました。
+      思考過程をJSONに出してるので、どこがうまくいかないのかを確認できます。
+      それで番組テーマとDJのキャラを両立させるための仕組みをいろいろと考えていきました。
+      この過程はすごく面白いね。ただ、細かくやってったらだんだん重くなっちゃった。
+    </p>
+
+    <p>
+      8月25日には、一旦の目標をプレイリストの作成だけに絞って開発を進めることを決定しました。
+      当初の音声化はまた後にして、とりあえずここまでで区切りをつける。
+      自分が飽きないうちに、まずは形にすることを優先することにしました。
+    </p>
+
+    <h2>はじめてのUI作成</h2>
+    <p>
+      形にするためにはUIが必要です。いまは最低限の見た目しかないので、
+      もう少しかっこよい見た目にしたくて相談しました。
+    </p>
+
+    <div class="img-box"><img src="images/08_dev5-2025-10-13-12-40-24.png" alt=""></div>
+    <div class="img-box"><img src="images/08_dev5-2025-10-13-12-41-05.png" alt=""></div>
+
+    <p>こんな感じで要件をまとめていってもらいます。</p>
+
+    <p>
+      だいたい納得したのでコードに落とそうとしたら、Tailwindというものがでてきた。
+    </p>
+    <div class="img-box"><img src="images/08_dev5-2025-10-13-12-42-27.png" alt=""></div>
+
+    <p>当然よくわからないから聞いてみます。</p>
+    <div class="img-box"><img src="images/08_dev5-2025-10-13-12-43-14.png" alt=""></div>
+    <div class="img-box"><img src="images/08_dev5-2025-10-13-12-43-42.png" alt=""></div>
+
+    <p>
+      よさそうなので入れてみます。なるほどー、ライブラリがいろいろあるのか便利だな。
+    </p>
+
+    <p>なんとなく形になってきたぞ!（8/25）</p>
+    <div class="img-box"><img src="images/07_dev4-2025-10-12-21-41-04.png" alt=""></div>
+
+    <p>DJも増やしていろいろとチェックしていきます（8/28）</p>
+    <div class="img-box"><img src="images/07_dev4-2025-10-12-21-41-47.png" alt=""></div>
+
+    <p>
+      うん、楽しいぞ！　1週間に1回くらい、できた！感があるとモチベーションが保てますね。
+    </p>
+
+    <hr>
+
+    <nav>
+      ← <a href="07_dev4.html">前へ（沼る予感からの再々起動）</a>　|　
+      <a href="09_dev6.html">次へ（開発フェーズ6）</a> →
+    </nav>
+<div style="text-align:center; margin-top:40px;">
+  <a href="../index.html" 
+     style="display:inline-block; padding:10px 18px; border:1px solid #4a5a78;
+            border-radius:6px; color:#0366d6; text-decoration:none;
+            background:#f9fafb; font-size:0.9rem;">
+    ▲ トップへ戻る
+  </a>
+</div>
+
+  </main>
+</body>
+</html>

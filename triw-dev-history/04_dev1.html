@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>4. いよいよ本開発スタート（7月半ば～後半） - Project TRIW 開発記録</title>
+
+  <style>
+    body {
+      font: 16px/1.7 system-ui, -apple-system, "Segoe UI", Roboto,
+            "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      margin: 24px;
+      background: #fff;
+      color: #222;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.3rem; margin-top: 2rem; }
+    hr { margin: 1.5rem 0; }
+    p { margin: 0 0 1em; }
+    ul { padding-left: 1.4rem; margin: 0 0 1em; }
+    li { margin-bottom: 0.3em; }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .img-box {
+      border: 1px solid #4a5a78;
+      padding: 4px;
+      margin: 8px 0 24px;
+    }
+
+    nav {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    nav a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main>
+
+    <h1>4. いよいよ本開発スタート（7月半ば～後半）</h1>
+
+    <h2>まずはnext.jsになれようとした</h2>
+    <p>
+      開発フォルダを見てもまったく意味がわからないのでまずは慣れることから始めようと思い、ハローワールドをはじめます。
+    </p>
+    <div class="img-box"><img src="images/04_dev1-2025-10-12-19-57-35.png" alt=""></div>
+
+    <p>
+      page.jsって何ぞ。.htmlじゃないんだよな。あーJavaScriptか？
+      このころは文法とかも覚えたほうがいいかもと思っていたし、
+      ChatGPTが教えてくれるから付き合ってた。
+      でもすぐ飽きる。別にプログラミングがしたいのではないのですね……。
+    </p>
+
+    <h2>やりたいことは何か？</h2>
+    <p>
+      しばらく環境整備とかばかりやってたので、ここでもう一度何を作るんだっけということを考え直そうと思った。
+      ほんと環境整備とか飽きた。文法もいやだ。とにかく飽きっぽいんです。
+    </p>
+    <p>
+      現実世界で相談相手がいるわけでもないので、すべてChatGPTと話しながら進めます。
+      それまでも、どんなのができたら楽しいかをメモってはいたので、それをブラッシュアップしてく感じ。
+    </p>
+    <div class="img-box"><img src="images/04_dev1-2025-10-12-20-04-27.png" alt=""></div>
+
+    <p>メモをどんどんあげる。</p>
+    <div class="img-box"><img src="images/04_dev1-2025-10-12-20-05-46.png" alt=""></div>
+
+    <p>それに対してChatGPTはすぐ整理したがる。</p>
+    <div class="img-box"><img src="images/04_dev1-2025-10-12-20-06-55.png" alt=""></div>
+
+    <p>あんまり整理しすぎると話が広がらないので、まあそれは流して。</p>
+    <div class="img-box"><img src="images/04_dev1-2025-10-12-20-07-41.png" alt=""></div>
+
+    <p>このへんでいろいろと考えて。</p>
+    <div class="img-box"><img src="images/04_dev1-2025-10-12-20-09-45.png" alt=""></div>
+
+    <p>そうなんだよね。</p>
+    <div class="img-box"><img src="images/04_dev1-2025-10-12-20-10-20.png" alt=""></div>
+
+    <div class="img-box"><img src="images/04_dev1-2025-10-12-20-10-58.png" alt=""></div>
+
+    <p>
+      おっ、なかなかいいこと言うね。
+      振り返るとここで考えたことがベースになってる感じ。
+      つらつら考えてだんだんやることを具体化していった。
+    </p>
+    <ul>
+      <li>番組選択はユーザーがするといっても選べる番組を用意しておかないといけない。</li>
+      <li>ここがAIの活躍するとこだ。</li>
+      <li>番組名を入れてもらうのはいいアイデアかもしれない。ラジオ聞くときも、番組名から選ぶよね。</li>
+      <li>たとえば今日は一日〇〇三昧は特定のアーティストばかりかかるし、ラジオ深夜便は深夜にふさわしい曲がかかる。</li>
+      <li>番組名から逆に推測してプレイリストが作れればいいんじゃないか？</li>
+      <li>その線でまず進めてみよう。</li>
+    </ul>
+
+    <p>
+      やることを考えてたらまたがんばれそうになってきた。
+      そしてコード書いたりとかは極力まかせていけるとこまでいこうと気持ちを新たにした。
+    </p>
+
+    <hr>
+
+    <nav>
+      ← <a href="03_devenv.html">前へ（開発環境を整える）</a>　|　
+      <a href="05_dev2.html">次へ（開発フェーズ2）</a> →
+    </nav>
+<div style="text-align:center; margin-top:40px;">
+  <a href="../index.html" 
+     style="display:inline-block; padding:10px 18px; border:1px solid #4a5a78;
+            border-radius:6px; color:#0366d6; text-decoration:none;
+            background:#f9fafb; font-size:0.9rem;">
+    ▲ トップへ戻る
+  </a>
+</div>
+
+  </main>
+</body>
+</html>

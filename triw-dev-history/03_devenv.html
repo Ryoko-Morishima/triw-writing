@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>3. 開発環境を整える（7月半ば） - Project TRIW 開発記録</title>
+
+  <style>
+    body {
+      font: 16px/1.7 system-ui, -apple-system, "Segoe UI", Roboto,
+            "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      margin: 24px;
+      background: #fff;
+      color: #222;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.3rem; margin-top: 2rem; }
+    hr { margin: 1.5rem 0; }
+    p { margin: 0 0 1em; }
+    ul { padding-left: 1.4rem; margin: 0 0 1em; }
+    li { margin-bottom: 0.3em; }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .img-box {
+      border: 1px solid #4a5a78;
+      padding: 4px;
+      margin: 8px 0 24px;
+    }
+
+    nav {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    nav a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main>
+
+    <h1>3. 開発環境を整える（7月半ば）</h1>
+
+    <h2>もっと自動化を進めたい</h2>
+    <p>
+      ChatGPTに聞きながら進めたら、一部苦労はしたものの、無事ローカルで動くものができました。<br>
+      この勢いでアプリ作ったらいいんじゃない？と気持ちが一気に盛り上がります。<br>
+      音声ファイルを作るとか細かいこといってないでSpotifyと連携して音声ファイルはこっちにもっておいて、
+      順番に読むとこもWeb上でやればいいじゃん！　できるできる！
+    </p>
+    <p>
+      というわけで、さて早速SpotifyAPIをまずは使えるようにしなくちゃな、と短絡的に考えます。
+      すでにAPIやってるしできるだろ。ChatGPTに手順を聞きながら着々とすすめたら、知らない言葉がでてきた。
+    </p>
+    <p>「Redirect URI」の設定です。</p>
+    <p>ChatGPT曰く。</p>
+    <p>
+      「Redirect URI（リダイレクトURI）には、「Spotify認証後にユーザーを戻すURL」を指定します。
+      これはあなたのアプリ側で受け取るURLで、<b>環境によって変わります</b>。
+      「<b>開発中と本番環境</b>の両方を登録しておくのがオススメです。」<br>
+      本番環境！？　さらに。
+    </p>
+    <p>
+      「必要であれば次は「OAuth認証を開始するURLを作る方法」や「Node.js/Next.jsでのトークン取得コード」も案内できます。
+      <b>開発言語</b>や<b>環境</b>が決まっていれば教えてください！」
+    </p>
+    <p>
+      いやーーーーーなんも決まってないよー。つーか考えたこともないよーーー。
+      まあでもできたら公開したら楽しそうだしな、どうせならここで「開発環境」も整えていったほうがいいのかもしれないな……。
+    </p>
+
+    <h2>開発環境（Next.js）を入れるように勧められる</h2>
+    <p>
+      ここまでは普通にテキストエディタでテキストファイルを作ってただけだったんですよね。
+      私のやったことあるWebページって基本テキストファイルを作って、それをブラウザから読むっていうやつですから。
+      一応知識としては最近のWeb開発は普通フレームワーク使うってことは知っています。
+      でもいかんせん触ったことはない。いい機会だしやってみるのもいいかもね。わかんなくても聞けば答えてもらえるしね。
+    </p>
+    <p> まずNext.jsって何なのかを聞いてみます。</p>
+    <div class="img-box"><img src="images/03_devenv-2025-10-12-18-00-00.png" alt=""></div>
+    <div class="img-box"><img src="images/03_devenv-2025-10-12-18-00-45.png" alt=""></div>
+
+    <p>自信満々におすすめされたので、畳みかけて聞いてみます。</p>
+    <div class="img-box"><img src="images/03_devenv-2025-10-12-18-01-34.png" alt=""></div>
+
+    <p>ここまで言われたらやるしかなくない？　しかしこの流れ、なんかマルチの勧誘めいてるよね。</p>
+
+    <h2>さらにVS Codeまで勧められる</h2>
+    <p>
+      手順を聞きながらインストールを進めていきます。
+      しかしインストールの過程でさらにVS Codeまで進められます。
+    </p>
+    <div class="img-box"><img src="images/03_devenv-2025-10-12-18-07-35.png" alt=""></div>
+    <p>そして開発するならこれと言われて</p>
+    <div class="img-box"><img src="images/03_devenv-2025-10-12-18-09-23.png" alt=""></div>
+    <p>そしたら入れるしかないですよね。</p>
+    <div class="img-box"><img src="images/03_devenv-2025-10-12-18-09-52.png" alt=""></div>
+
+    <p>
+      まあまあいろいろあったんですがスクショをChatGPTに貼り、解決しながらインストール完了です。
+    </p>
+    <div class="img-box"><img src="images/03_devenv-2025-10-12-18-12-00.png" alt=""></div>
+    <p>アクセスしたら……</p>
+    <div class="img-box"><img src="images/03_devenv-2025-10-12-18-12-20.png" alt=""></div>
+    <p>でた。無理やり開発のスタートラインに立たされてしまった感がありありです。</p>
+
+    <h2>ついでにGIT HUB連携も</h2>
+    <p>
+      VS CODE だけでなく、開発やるならGIT HUBの連係まで勧められたのだった。
+      名前も知ってるしアカウントは持ってる。けど使いこなせてない。
+      そりゃいままで開発ってものをしてないからね。
+    </p>
+    <p>
+      一応説明も聞く。丁寧に教えてくれるものの覚えきれない。
+      でも管理するにはよいものなのは知ってるので、とりあえず連携もしておく。
+      やり方とかはとりあえずまかせてしまおう…。
+    </p>
+
+    <h2>準備でへとへと</h2>
+    <p>
+      next.jsで管理するファイルがHTMLとかじゃないので何が何だかわからない。
+      しかもディレクトリが勝手にできていく（のか、ChatGPTの指定で作ったのかはちょっと忘れた）。
+      ディレクトリ構造がよくわからない。さらに構成を整理する。
+    </p>
+    <p>
+      そんなこんなで開発に入るための準備にかなりの時間を要する。
+      過去ログ見たらぐちってた。
+    </p>
+    <div class="img-box"><img src="images/03_devenv-2025-10-12-19-25-44.png" alt=""></div>
+    <p>ぐちると慰めてくれるのはこの段階ではかなり勇気づけられた。</p>
+
+    <h2>開発プロジェクト名も決めた</h2>
+    <p>
+      そんなわけで、ディレクトリ名とかつけないといけない都合上、
+      もう仮でプロジェクト名もつけておく必要が出てきた。
+      これもChatGPTと話ながら考えていったんですが、こういう相談はちょっと楽しい。
+      はじめFM曲みたいに数字もいいかなーと思ったのだが、いまいちピンとこない。
+      実際に周波数ってわけでもないし嘘っぽいしなー。
+    </p>
+    <p>
+      いろいろと考えて、なんか頭文字が取れそうなのがいいなと思って考え付いたのがこれ。
+    </p>
+    <ul>
+      <li>The Radio I Wanted（略してTRIW）</li>
+    </ul>
+    <p>今後、これをプロジェクト名として進めていきます。</p>
+
+    <h2>開発するなら日誌も書いた方がいいよね</h2>
+    <p>
+      せっかく真面目にやることになったので、それなら開発日誌も書いておこうと思いました。
+      なんで思ったのかは今となってはわかりません。
+      真面目にやるなら記録しようと思ったのかもしれません。
+      日誌ももちろんChatGPTに書いてもらいます。
+    </p>
+    <div class="img-box"><img src="images/03_devenv-2025-10-12-19-28-16.png" alt=""></div>
+    <div class="img-box"><img src="images/03_devenv-2025-10-12-19-29-01.png" alt=""></div>
+    <p>
+      ログ見ると、いきなり開発モードに突入して不安になってたようです。
+      頻繁に愚痴ったり心配と言ってて、そのたびに励まされてた。
+    </p>
+    <div class="img-box"><img src="images/03_devenv-2025-10-12-19-01-11.png" alt=""></div>
+    <div class="img-box"><img src="images/03_devenv-2025-10-12-19-01-45.png" alt=""></div>
+    <p>
+      いやー、改めて振り返ってみるとほんとにマルチっぽいな。
+      でも応援されるとがんばれるのは確か。
+    </p>
+
+    <hr>
+
+    <nav>
+      ← <a href="02_1st_dev.html">前へ（開発のはじまり）</a>　|　
+      <a href="04_dev1.html">次へ（開発フェーズ1）</a> →
+    </nav>
+<div style="text-align:center; margin-top:40px;">
+  <a href="../index.html" 
+     style="display:inline-block; padding:10px 18px; border:1px solid #4a5a78;
+            border-radius:6px; color:#0366d6; text-decoration:none;
+            background:#f9fafb; font-size:0.9rem;">
+    ▲ トップへ戻る
+  </a>
+</div>
+
+  </main>
+</body>
+</html>

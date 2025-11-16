@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>9. 選曲ロジックを詰めていったらまた沼にはまる（8月後半～9月後半） - Project TRIW 開発記録</title>
+
+  <style>
+    body {
+      font: 16px/1.7 system-ui, -apple-system, "Segoe UI", Roboto,
+            "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      margin: 24px;
+      background: #fff;
+      color: #222;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.3rem; margin-top: 2rem; }
+    hr { margin: 1.5rem 0; }
+    p { margin: 0 0 1em; }
+    ul, ol { padding-left: 1.4rem; margin: 0 0 1em; }
+    li { margin-bottom: 0.3em; }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .img-box {
+      border: 1px solid #4a5a78;
+      padding: 4px;
+      margin: 8px 0 24px;
+    }
+
+    nav {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    nav a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main>
+
+    <h1>9. 選曲ロジックを詰めていったらまた沼にはまる（8月後半～9月後半）</h1>
+
+    <h2>また状況が悪化</h2>
+    <p>
+      機能を追加して書き換えていくうちに、なぜか見た目がまたしょぼくなったり。行ったり来たり……（8/29）。
+    </p>
+    <div class="img-box"><img src="images/07_dev4-2025-10-12-21-42-23.png" alt=""></div>
+
+    <p>
+      さらに選曲ロジックをいろいろいじってたらどんどん状況が悪化してきました。
+      しかも開発ドキュメント渡してるのに読んでくれない……。マネージャー（私）怒ってる。
+    </p>
+    <div class="img-box"><img src="images/08_dev5-2025-10-13-13-00-02.png" alt=""></div>
+
+    <p>
+      がんばって修正してくれようとしたんだけど、一向に良くならないので、あきらめてまたやり直すことにしました。
+      8月30日にフォルダごとまるっとバックアップした形跡がある。
+    </p>
+    <div class="img-box"><img src="images/09_dev6-2025-10-13-13-17-21.png" alt=""></div>
+
+    <p>
+      ていうかGitHub何のためにあるのよ、と思われると思います。はい、しばらくちゃんと上げてませんでした！
+      いい感じで進んでたんで忘れちゃってたの。気づいたらもう手遅れ。
+    </p>
+
+    <h2>仕切り直したよ</h2>
+    <p>
+      やり直すと早い。ちゃんとメモも残ってるしね。やり直しは慣れてきた！
+      使えるコードはどんどん使ってもらうようにしました。
+      ここまでこぎつけた（9/2）。
+    </p>
+    <ol>
+      <li>番組タイトルと概要を入力、DJを選択、曲数か分数を指定</li>
+      <li>曲を選択してその選択理由もかかせる</li>
+      <li>Spotifyに問い合わせてデータを取ってくる</li>
+    </ol>
+    <div class="img-box"><img src="images/08_dev5-2025-10-13-13-01-53.png" alt=""></div>
+
+    <p>
+      ここからはテストして、うまくいかない場合の対策を考えるフェーズ。
+      過程ログを吐き出させてるのでチェックもしやすいです。
+      だいぶ本来の開発っぽくなってきました。
+    </p>
+
+    <h2>選曲の質を上げるための仕組みを考えるのは面白い</h2>
+    <p>
+      実際のコード修正はいろいろたいへんだが、仕組みを考えるのは面白かったです。
+      曲を選ぶとはどういうことかを考える。つまりはテーマの解釈であり、その解釈に合致する曲を選ぶことである。
+    </p>
+
+    <p>
+      そこでまずペルソナに番組テーマを自分なりに解釈させるようにしました。
+      それでそのテーマに沿って曲を選ぶという2段階にしたわけです。
+      これで短絡的な曲名検索とかにならなくなりました。
+    </p>
+
+    <p>
+      それだけだとうまくいかなかったので、選んだ曲に対して再度チェックを入れる仕組みを追加してみました。
+      最後にこれで明らかにおかしいのをはじくようにするわけです。
+      年代などはデータによるファクトチェックをします。
+    </p>
+
+    <p>
+      ただ、はじく系の対応の仕組みをChatGPTに頼むといっこずつつぶしていく方向になってきりがなくなります。
+      ここはまかせず自分でやり方を考えていったほうが結果的によかったです。
+    </p>
+
+    <p>
+      コードのエラーも出続けてつぶして、というのも継続してやりつつですが、
+      そこまで重篤なことはなくなってきた（ような気がする、けど忘れてる可能性もある）。
+    </p>
+
+    <p>
+      という感じで、面白いけどキリがないのでここらへんでいったん区切りをつけようと思いました。
+    </p>
+
+    <hr>
+
+    <nav>
+      ← <a href="08_dev5.html">前へ（機能を絞ることにした）</a>　|　
+      <a href="10_dev7.html">次へ（開発フェーズ7）</a> →
+    </nav>
+<div style="text-align:center; margin-top:40px;">
+  <a href="../index.html" 
+     style="display:inline-block; padding:10px 18px; border:1px solid #4a5a78;
+            border-radius:6px; color:#0366d6; text-decoration:none;
+            background:#f9fafb; font-size:0.9rem;">
+    ▲ トップへ戻る
+  </a>
+</div>
+
+  </main>
+</body>
+</html>

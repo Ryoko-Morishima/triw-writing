@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>10. ついにリリース（9月後半～10月頭） - Project TRIW 開発記録</title>
+
+  <style>
+    body {
+      font: 16px/1.7 system-ui, -apple-system, "Segoe UI", Roboto,
+            "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      margin: 24px;
+      background: #fff;
+      color: #222;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.3rem; margin-top: 2rem; }
+    hr { margin: 1.5rem 0; }
+    p { margin: 0 0 1em; }
+    ul { padding-left: 1.4rem; margin: 0 0 1em; }
+    li { margin-bottom: 0.3em; }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .img-box {
+      border: 1px solid #4a5a78;
+      padding: 4px;
+      margin: 8px 0 24px;
+    }
+
+    nav {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    nav a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main>
+
+    <h1>10. ついにリリース（9月後半～10月頭）</h1>
+
+    <h2>再びUIを付けよう</h2>
+    <p>
+      ちょっと品質向上にも疲れてきたのでリリース（テスト）をしようと思いました。
+      開発しなおしてからは完全テストモードなのでUIは何もついていません。
+      前にやったのは忘れてるのでまた聞いてみます。
+    </p>
+
+    <div class="img-box"><img src="images/10_dev7-2025-10-13-13-45-40.png" alt=""></div>
+
+    <p>
+      導入手順を出してもらって手順どおり実行。コードをコピペ。枠は順調にできました。
+      DJを選ぶところで、イラストが入ったらよさそうだったので、
+      下絵を手がきしてからAIに清書してもらって、別パターンも作ってもらって画像を作成しました。
+      もと絵はなぜか見当たらないけど、これが清書してもらった猫DJです。
+    </p>
+
+    <div class="img-box"><img src="images/10_dev7-2025-10-13-14-00-32.png" alt=""></div>
+
+    <p>これの別動物バージョンも作ってもらいました。</p>
+
+    <h2>Spotify認証も再確認</h2>
+    <p>
+      自分以外が使うことを考えて、Spotifyのログインとログアウトボタンもつけておきます。
+      またここではまるんじゃないかとドキドキでした。
+    </p>
+
+    <h2>ローカルでは形になった</h2>
+    <p>
+      UIが付いただけなので、テスト段階とほぼ同じではありますが、
+      127.0.0.1にアクセスするとUIがそれらしく表示されて一通りは動くようになりました。
+      いろいろ入れてたら動作がだいぶ重くなっちゃったり、
+      できたプレイリストの品質が満足できなかったりはあるけどいったん動きとしては問題なさそう。
+    </p>
+
+    <h2>いよいよサーバーで公開</h2>
+    <p>
+      さて！　ついにサーバー公開です。
+      だいぶ前に、サーバー公開するときはどうするか聞いたら
+      VercelというものならGitHubからすぐ上げられるといわれていたのでそれでやってみます。
+    </p>
+
+    <p>
+      実際やってみたら、やはりエラーがどんどん出ました。
+      たぶん、これいま使ってないコードも上がってるな……。
+      ちょっとこころが折れそうになりながらも、
+      ChatGPTに修正コード出してもらいつつついにエラーがゼロになり、<b>デプロイ</b>できました。
+      ここはトラブルというより、ほんとにひとつずつひとつずつ修正しただけでした。
+    </p>
+
+    <p>
+      しかしその感動もつかの間。家族に動かしてもらったらさっそくSpotifyの認証エラーが出ます。
+      ChatGPTに聞いたら、それはSpotifyのAPIがデベロッパーモードだからではないかと言われました。
+      デベロッパーモードの場合は上限があり、
+      ユーザーのメールアドレスを事前に登録しておかないとだめなんだそうです。
+      これはサービス申請を行うことで撤廃できるらしい。
+      登録のための文案（英語文）はChatGPTが出してくれたので、
+      もう少し改良したら登録してみよう。
+    </p>
+
+    <p>
+      認証はSpotify側の登録の問題だったので、アドレス登録しただけで無事解決できました。
+      やった！！！　外からも動いたぞー！
+    </p>
+
+    <div class="img-box"><img src="images/10_dev7-2025-10-18-16-09-49.png" alt=""></div>
+
+    <h2>今後</h2>
+    <p>
+      数人の友だちにもテストしてもらいました。
+      外部で動かすと、やっぱり問題がいろいろ出てきます。
+      まず一番の問題が、途中ログが保存されないことです。
+      生成ログを保存することができていないので、テストをしても改善に生かせません。
+      これは早急に改善しないと。
+    </p>
+
+    <p>
+      あと適切なDJを選ぶことによる効果が伝わりづらい。
+      プレイリストがぜんぜん思ったようにできないよ、と言われました。
+      DJとミックスタイトルがはまればいい感じにできるはずなのです。
+    </p>
+
+    <p>
+      まあでもとりあえずはなんとか動いたのはうれしい！
+      ひきつづきがんばります！
+    </p>
+
+    <hr>
+
+    <nav>
+      ← <a href="09_dev6.html">前へ（選曲ロジックを詰めていったらまた沼にはまる）</a>　|　
+      <a href="11_summary.html">次へ（まとめ）</a> →
+    </nav>
+<div style="text-align:center; margin-top:40px;">
+  <a href="../index.html" 
+     style="display:inline-block; padding:10px 18px; border:1px solid #4a5a78;
+            border-radius:6px; color:#0366d6; text-decoration:none;
+            background:#f9fafb; font-size:0.9rem;">
+    ▲ トップへ戻る
+  </a>
+</div>
+
+  </main>
+</body>
+</html>

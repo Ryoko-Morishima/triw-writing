@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>5. Spotify連携の壁（7月後半～8月上旬） - Project TRIW 開発記録</title>
+
+  <style>
+    body {
+      font: 16px/1.7 system-ui, -apple-system, "Segoe UI", Roboto,
+            "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      margin: 24px;
+      background: #fff;
+      color: #222;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.3rem; margin-top: 2rem; }
+    hr { margin: 1.5rem 0; }
+    p { margin: 0 0 1em; }
+    ul { padding-left: 1.4rem; margin: 0 0 1em; }
+    li { margin-bottom: 0.3em; }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .img-box {
+      border: 1px solid #4a5a78;
+      padding: 4px;
+      margin: 8px 0 24px;
+    }
+
+    nav {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    nav a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main>
+
+    <h1>5. Spotify連携の壁（7月後半～8月上旬）</h1>
+
+    <h2>Spotify APIは手ごわかった</h2>
+    <p>
+      さて、ふたたび本筋にもどってSpotify APIを使えるようにがんばっていきます（ChatGPTが）。
+      OpenAIのときはすんなりいったけど、Spotify APIを使うためにはいろいろ設定が必要で大変だ。
+      ……正直、もう何が大変だったのか思い出せない。しかしちゃんと開発日記がある！
+      それを見ると、まずSpotifyのAPIを試すところから始めたらしい。
+    </p>
+
+    <hr>
+
+    <h2>📓 開発日誌：2025-07-26（土）</h2>
+
+    <h3>🎯 やったこと</h3>
+    <ul>
+      <li>Spotify Web API の認証・推薦APIの動作を Postman で本格的に試行</li>
+      <li>トップアーティスト取得API（<code>/v1/me/top/artists</code>）のレスポンス確認</li>
+      <li>プレイリスト生成に向けて <code>/v1/recommendations</code> を試したが、パラメータエラーなどに苦戦</li>
+      <li><code>seed_genres</code> や <code>target_valence</code> などのパラメータ指定に失敗し、エラーを調査</li>
+      <li>アクセストークン取得のトラブル（Web API Console で Get Token が表示されない）</li>
+    </ul>
+
+    <h3>🛠 課題と対応</h3>
+    <ul>
+      <li>API Console が使えないことを確認し、今後は Postman 経由の認証を主軸にする方針に変更</li>
+      <li>Postman の Authorization タブや Header 設定に慣れてきた</li>
+      <li>将来的には Postman を使わず、Webアプリ内で Spotify API を使えるようにしたいと思った</li>
+    </ul>
+
+    <h3>💬 感想・次へのステップ</h3>
+    <ul>
+      <li>目的のプレイリスト推薦APIが正しく動かず悔しかったが、Postman操作には自信がついてきた</li>
+      <li>次は Spotify 認証を Web アプリ側で処理できるようにサンプル構築へ移行予定</li>
+    </ul>
+
+    <hr>
+
+    <p>
+      開発日誌の課題と対応はなんか嘘っぽいな。
+      ここでやってたのは、Spotify利用のためのテストみたいなものなので、
+      ここまで必死になる必要があったのかはいまとなっては疑問だ。
+      このやりとりはほんとに大変だった。しかもそのあとPostmanも使ってない。
+    </p>
+
+    <h2>本来やりたかったWebからの認証を動かす</h2>
+    <p>
+      本来Webから認証できりゃいいので、サンプル構築をどんどんすすめる方針にする。
+      そしたら、認証するには新しくパッケージの追加インストールが必要だといわれた。
+      へええ。こんな便利なものがあるなら先に言ってくれ。
+    </p>
+    <div class="img-box"><img src="images/05_dev2-2025-10-12-20-42-05.png" alt=""></div>
+
+    <p>
+      ほかに、login.tsとかcallback.tsとかを作るように言われるのでコピペで作る。
+      なんかtsとtsxってのがあるのだな。
+      この時点では、コマンドを入れるという意味もよくわからず。初心者of 初心者！
+    </p>
+    <div class="img-box"><img src="images/05_dev2-2025-10-12-20-44-06.png" alt=""></div>
+
+    <p>
+      ターミナルをVS Code内で開く、というのもまだなじんでいなかった。
+      しかもいったん聞いたことをまたすぐに忘れて聞いてる。
+    </p>
+    <div class="img-box"><img src="images/05_dev2-2025-10-12-20-46-42.png" alt=""></div>
+    <div class="img-box"><img src="images/05_dev2-2025-10-12-20-47-11.png" alt=""></div>
+
+    <p>なんど聞いても嫌がらないで教えてくれるのはいいね……。</p>
+
+    <p>
+      このあとも言われるがままにファイルを作り、コピペし、の繰り返し。
+      ログインボタンを表示するコードも出てきた。コピペで作成。
+      これがUI作成つうやつか。
+      やはりいろいろとエラーは出るがそのたび聞いて修正、聞いて修正を繰り返していく。
+    </p>
+
+    <p>
+      このあたりでディレクトリがずれたりとかいろいろ起こる。
+      ファイルがないといわれ、一か所なおしたらまた動かず、ああもうだめだ。
+      完全にここで泥沼に陥った。日誌の日付を見ると前回のテストから10日間空いてる。
+      そしてついにやり直しを決めたのだった。
+    </p>
+
+    <hr>
+
+    <h2>📓 開発日誌：2025-08-07（木）</h2>
+
+    <h3>🎯 今日の目標</h3>
+    <ul>
+      <li>Spotify認証連携の動作確認（<code>signIn('spotify')</code> でログイン）</li>
+      <li>Next.js アプリの起動と <code>.env.local</code> の環境変数確認</li>
+      <li>認証後の動作（リダイレクト）までつなげたい！</li>
+    </ul>
+
+    <h3>🛠 やったこと（順番に）</h3>
+
+    <h4>✅ Next.js 開発サーバ起動</h4>
+    <ul>
+      <li><code>npm run dev</code> 実行し、正常に <code>localhost:3000</code> で立ち上がることを確認（最初は成功）</li>
+      <li>一度ポート競合でプロセス強制終了→再起動（成功）</li>
+    </ul>
+
+    <h4>✅ Sign in with Spotify ボタンの動作確認</h4>
+    <ul>
+      <li><code>signIn('spotify')</code> ボタンを実装</li>
+      <li>クリック時に <code>process.env.SPOTIFY_CLIENT_ID is undefined</code> エラーに遭遇 → 環境変数の読み取りミスに気づく</li>
+    </ul>
+
+    <h4>✅ .env.local の整備</h4>
+    <pre><code>SPOTIFY_CLIENT_ID=（本物）
+SPOTIFY_CLIENT_SECRET=（本物）
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=（ランダムな長い文字列）
+</code></pre>
+    <p><code>console.log()</code> で <code>CLIENT_ID</code> / <code>SECRET</code> が読み込めていることも確認。</p>
+
+    <h4>✅ next-auth インストールと [...nextauth] 実装</h4>
+    <ul>
+      <li>APIルート <code>app/api/auth/[...nextauth]/route.ts</code> を作成（App Router構成）</li>
+      <li>Spotify プロバイダの認証設定を追加</li>
+      <li>認証処理自体は <code>200 OK</code> が返るように見えた</li>
+    </ul>
+
+    <h3>⚠️ ハマったポイント</h3>
+
+    <ul>
+      <li>❌ <b>INVALID_CLIENT</b> エラー — Spotifyにリダイレクトすると発生。原因：<br>
+        Spotify Developer Dashboardで<code>localhost</code>が使えない（<code>This redirect URI is not secure</code> エラー）。<br>
+        対策として <code>127.0.0.1:3000</code> をリダイレクトURIにしたが、挙動不安定。
+      </li>
+      <li>❌ <b>localhost:3000 に突然アクセスできなくなった</b> — 開発サーバは起動しているのにブラウザでページが表示されない。</li>
+      <li>❌ <b>状況が複雑化して、何が原因かわからなくなってしまった</b> — <code>.env.local</code>、コード、ブラウザ、リダイレクト、すべてが絡み合い迷子状態に。</li>
+    </ul>
+
+    <p>
+      精神的にもくじけそうになり「いったん最初からやり直したい」と判断（←賢明！）
+    </p>
+
+    <h3>✍️ 明日以降やること（再スタート）</h3>
+    <ol>
+      <li><b>Pages Routerで最小構成からやり直す</b> — <code>npx create-next-app</code> → Pages Router を選択</li>
+      <li><b>SpotifyリダイレクトURIは「127.0.0.1:3000」形式で登録</b> — <code>localhost</code> は使えないことを忘れずに</li>
+      <li><b><code>signIn('spotify')</code> だけのシンプルな構成でまず1回成功させる</b> — 動いたらそこから順次機能追加</li>
+    </ol>
+ <hr>
+    <p>うーむなかなか手ごわい。</p>
+
+   
+
+    <nav>
+      ← <a href="04_dev1.html">前へ（本開発スタート）</a>　|　
+      <a href="06_dev3.html">次へ（開発フェーズ3）</a> →
+    </nav>
+<div style="text-align:center; margin-top:40px;">
+  <a href="../index.html" 
+     style="display:inline-block; padding:10px 18px; border:1px solid #4a5a78;
+            border-radius:6px; color:#0366d6; text-decoration:none;
+            background:#f9fafb; font-size:0.9rem;">
+    ▲ トップへ戻る
+  </a>
+</div>
+
+  </main>
+</body>
+</html>

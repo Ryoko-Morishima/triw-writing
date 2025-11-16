@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>2. 開発のはじまり（7月初旬） - Project TRIW 開発記録</title>
+
+  <style>
+    body {
+      font: 16px/1.7 system-ui, -apple-system, "Segoe UI", Roboto,
+            "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      margin: 24px;
+      background: #fff;
+      color: #222;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.3rem; margin-top: 2rem; }
+    hr { margin: 1.5rem 0; }
+    p { margin: 0 0 1em; }
+    ul { padding-left: 1.4rem; margin: 0 0 1em; }
+    li { margin-bottom: 0.3em; }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .img-box {
+      border: 1px solid #4a5a78;
+      padding: 4px;
+      margin: 8px 0 24px;
+    }
+
+    nav {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    nav a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main>
+
+    <h1>2. 開発のはじまり（7月初旬）</h1>
+
+    <h2>気軽にはじめてしまった</h2>
+    <p>
+      ヴァイブコーディングについてはあまり調べなかった。ChatGPTにやりたいことを気軽に頼んでみることにした。
+      まずは自分の作りたいものを書く。そのために、どういうアプリがあったらうれしいかを考えた。
+      これはつらつらと人間が考えています。そしてそれをまとめ、実現するための手順を聞いた。
+    </p>
+
+    <div class="img-box">
+      <img src="images/02_1st_dev-2025-10-12-15-47-02.png" alt="">
+    </div>
+
+    <p>すぐ返事が返ってくる。</p>
+
+    <div class="img-box">
+      <img src="images/02_1st_dev-2025-10-12-15-48-05.png" alt="">
+    </div>
+
+    <div class="img-box">
+      <img src="images/02_1st_dev-2025-10-12-15-49-01.png" alt="">
+    </div>
+
+    <div class="img-box">
+      <img src="images/02_1st_dev-2025-10-12-15-50-15.png" alt="">
+    </div>
+
+    <p>
+      いや、フェーズとか言われても……。えっこんなに本格的なの。ちょっと待て。
+      ここは正直にこちらのスキルを伝えなければ。
+    </p>
+
+    <div class="img-box">
+      <img src="images/02_1st_dev-2025-10-12-15-51-37.png" alt="">
+    </div>
+
+    <p>
+      ミニゴールっていいですね。じゃあやってみるかな。相談して最初に作ってみようといわれたのがこれ。
+    </p>
+
+    <div class="img-box">
+      <img src="images/02_1st_dev-2025-10-12-15-53-17.png" alt="">
+    </div>
+
+    <h2>初めてのAPI</h2>
+
+    <p>
+      おおーAPIがでてきた！ 憧れのAPI！ API叩けるようになったらなんでもできるぞ！
+      もちろんAPIなんて使ってみるのは初めてなので、APIの使い方を逐一聞きながら進める。
+      HTMLファイルも出してもらってローカルに保存、ブラウザで表示すればいいらしい！
+    </p>
+
+    <div class="img-box">
+      <img src="images/02_1st_dev-2025-10-12-16-14-42.png" alt="">
+    </div>
+
+    <p>が！動かない！</p>
+
+    <div class="img-box">
+      <img src="images/02_1st_dev-2025-10-12-16-15-39.png" alt="">
+    </div>
+
+    <p>先に言えや！！！</p>
+
+    <div class="img-box">
+      <img src="images/02_1st_dev-2025-10-12-16-16-37.png" alt="">
+    </div>
+
+    <p>ほんとだな。じゃあおすすめにします。</p>
+
+    <h2>初めてのサーバー立て</h2>
+
+    <p>ChatGPTのいうことにゃ</p>
+
+    <div class="img-box">
+      <img src="images/02_1st_dev-2025-10-12-16-19-34.png" alt="">
+    </div>
+
+    <p>
+      まあそうですよね。サーバーたてなきゃ動かないよね。
+      しかし5分てどこから来たのか。気軽に言うが、言われたとおりやっても動かない。
+      このあたりからだんだんChatGPTの「5分でできます！」はあやしいと思い始めてきた。
+      動かないといったら「Windowsだとだめかも」という。方法を聞いたら別のコマンドを教えてくれた。
+      幸い私はpythonを入れてあったので起動した。
+    </p>
+
+    <div class="img-box">
+      <img src="images/02_1st_dev-2025-10-12-16-23-58.png" alt="">
+    </div>
+
+    <h2>初めてのエラーつぶし</h2>
+
+    <p>
+      ChatGPTと開発していくときに欠かせないのがエラーつぶしだ。というかこれが主かもしれない。
+      いわれるがままにここまで進めてきたが、開発らしきものをやっていくとなるとここがポイントらしいということが
+      うすうす見えてきた。
+    </p>
+
+    <ul>
+      <li>うまくいかないことをChatGPTに人間が伝える</li>
+      <li>エラーの確定をするための方法をChatGPTが指示</li>
+      <li>人間がそれを実行して結果をChatGPTに教える</li>
+      <li>ChatGPTが修正案を出し、それをまた人間が実行</li>
+      <li>うまくいくまでくりかえし</li>
+    </ul>
+
+    <p>
+      ファイルを作り、指定のところに置いて実行してアクセスしてみるが、まあ思った通りには動かない。
+      次に指示されたのが「ブラウザ開発者ツールを開いて確認せよ」。
+      もちろん、ブラウザ開発者ツールも使ったことないので、開き方から見方まで全部聞く。
+    </p>
+
+    <p>しかしまだ解決できない。</p>
+
+    <p>エラーを究明するためにログを出させるコードも修正してほしいと言ってきた。</p>
+
+    <div class="img-box">
+      <img src="images/02_1st_dev-2025-10-12-16-38-27.png" alt="">
+    </div>
+
+    <div class="img-box">
+      <img src="images/02_1st_dev-2025-10-12-16-39-01.png" alt="">
+    </div>
+
+    <p>
+      とにかく、いわれたままにコードを人間が書き換え、実行して結果を伝えます。
+    </p>
+
+    <div class="img-box">
+      <img src="images/02_1st_dev-2025-10-12-16-40-04.png" alt="">
+    </div>
+
+    <p>
+      ほめてくれてありがとう。んでもってこれを修正するためのコードがでて、書き換えて、というのをがんばっていきました。
+    </p>
+
+    <h2>API利用開始トラブルの解決</h2>
+
+    <div class="img-box">
+      <img src="images/02_1st_dev-2025-10-12-16-41-12.png" alt="">
+    </div>
+
+    <p>
+      きりがない……。こんな感じで延々続くエラーをつぶしていきます。
+      API使うのたいへんですね。
+    </p>
+
+    <p>結局の結論は。</p>
+
+    <div class="img-box">
+      <img src="images/02_1st_dev-2025-10-12-16-43-46.png" alt="">
+    </div>
+
+    <p>
+      こんなんわかるか。これ、普通に自分でやってたら絶対解決できなかったと思います。
+      そのあと、サポートページで解除するための方法と申請文も出してくれて、さらにそのあとのやり取りも頼んで解決しました。
+    </p>
+
+    <div class="img-box">
+      <img src="images/02_1st_dev-2025-10-12-16-47-57.png" alt="">
+    </div>
+
+    <h2>テキストからの音声生成を実現する</h2>
+
+    <p>
+      さて、APIの利用ができるように準備が整ったので、本筋の開発を続けます。
+      目的は音声ファイルを生成するところまででした。具体的にどうやって音声化するかをまず相談します。
+    </p>
+
+    <div class="img-box">
+      <img src="images/02_1st_dev-2025-10-12-16-54-02.png" alt="">
+    </div>
+
+    <p>
+      Google Cloud TTS APIを使うことにします。すでにOpenAIのAPIを使うときにエラーを解決した経験があるので
+      ここはわりとすいすいとエラーを解決できました。
+    </p>
+
+    <p>
+      API連携はうまくいったものの、期待通りの音声ファイルができない問題が発生します。
+      すでにナレーション台本を作る基本的な流れは考えていたものの、台本に余計な指示や記号が入ってしまってそれが取れない。
+      TTSは忠実に「カッコ」とかまで読んでしまう。ChatGPTのプロンプトの問題なので、
+      プロンプトを試行錯誤し、さらに最終的には力業ではずす（Javascriptで）という解決をしました。
+    </p>
+
+    <h2>UIもつけてみる。動いた！</h2>
+
+    <p>
+      エラーが解決できたので、全体で動かしてみることにします。
+      HTMLを出してもらってファイルに保存、さてブラウザからアクセス。
+    </p>
+
+    <div class="img-box">
+      <img src="image.png" alt="">
+    </div>
+
+    <p>どうやらいっぱつで動いた模様</p>
+
+    <div class="img-box">
+      <img src="images/02_1st_dev-2025-10-12-17-18-52.png" alt="">
+    </div>
+
+    <p>
+      まあまあ苦労したものの、結構すんなりと進みました。
+      とにかくやるべきことをどんどん教えてくれるので、それに従って行けばうまくいくような気がしていました。
+      なんつってもAPI使えるようになったしね！　夢が膨らみます。
+    </p>
+
+    <hr>
+
+    <nav>
+      ← <a href="01_zenya.html">前へ（開発前夜）</a>　|　
+      <a href="03_devenv.html">次へ（開発環境を整える）</a> →
+    </nav>
+<div style="text-align:center; margin-top:40px;">
+  <a href="../index.html" 
+     style="display:inline-block; padding:10px 18px; border:1px solid #4a5a78;
+            border-radius:6px; color:#0366d6; text-decoration:none;
+            background:#f9fafb; font-size:0.9rem;">
+    ▲ トップへ戻る
+  </a>
+</div>
+
+  </main>
+</body>
+</html>

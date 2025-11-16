@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>1. 開発前夜（6月半ば～後半） - Project TRIW 開発記録</title>
+  <style>
+    body {
+      font: 16px/1.7 system-ui, -apple-system, "Segoe UI", Roboto,
+            "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      margin: 24px;
+      background: #fff;
+      color: #222;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.3rem; margin-top: 2rem; }
+    hr { margin: 1.5rem 0; }
+    p { margin: 0 0 1em; }
+    ul { padding-left: 1.4rem; margin: 0 0 1em; }
+    li { margin-bottom: 0.3em; }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .img-box {
+      border: 1px solid #4a5a78;
+      padding: 4px;
+      margin: 8px 0 24px;
+    }
+
+    nav {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    nav a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>1. 開発前夜（6月半ば～後半）</h1>
+
+    <h2>きっかけはSpotifyの曲解説ナレーションがほしかったこと</h2>
+    <p>
+      2025年6月半ば。Spotifyで気に入ったプレイリストがあってよく聞いていた。
+      曲名とかアーティストとか知らないから確認したいんだけど、そのたびスマホを取り出さないといけない。
+      そういやラジオって曲紹介が入るのがよかったなあ、でもいまそういういい感じのラジオ番組って少なくなっちゃったんだよな。
+      じゃあナレーション入りを作ったらいいんじゃない？ いいんじゃない！？
+    </p>
+
+    <h2>SpotifyのPodキャストを作ろうと思った</h2>
+
+    <ul>
+      <li><strong>まずセットリストを抜き出す。</strong></li>
+    </ul>
+    <p>
+      たしか曲を読み込めるPodキャストがあったはずなので、台本つくればいいんじゃないかと考えた。
+      まずプレイリストの曲名とアーティスト名を抜き出す方法を考えた。
+      プレイリストのURLを貼ってテキスト化を頼んだがうまくいかない。
+      どうしたらいいかChatGPTに聞いたらキャプチャ画像を貼れという返事が。
+      なるほど、OCRができるのか。
+    </p>
+
+    <div class="img-box">
+      <img src="images/01_zenya-2025-10-12-15-06-50.png" alt="">
+    </div>
+
+    <ul>
+      <li><strong>各曲の概要やエピソードをまとめ、紹介用の台本を生成</strong></li>
+    </ul>
+    <p>
+      こういうのはおそらくAIが得意な分野なので、ここでChatGPTを使ってみようと思った。
+      ChatGPTの過去ログを見ると、まず各曲の資料作成を行い、それを基に各曲の紹介文を生成させていた。
+      このあたりよく覚えてないけど、どんな紹介ナレーションがうれしいかを考えていたようだ。
+      曲名とアーティスト名は必須、あとは曲の一節を抜き出すとかグループの国とか、特徴的なエピソードとか。
+      そのためにたぶん基礎資料を作るという手法になったんじゃないかな。
+      結構ナレーションっぽい文章を作らせるのに四苦八苦している。
+    </p>
+
+    <div class="img-box">
+      <img src="images/01_zenya-2025-10-12-15-14-17.png" alt="">
+    </div>
+
+    <ul>
+      <li><strong>読み上げサービスで音声生成</strong></li>
+    </ul>
+    <p>
+      これを音声化するため、読み上げソフトをChatGPTで調査。
+      台本（テキストファイル）を手動で読み上げサービスに入れて音声ファイルを作った。
+    </p>
+
+    <ul>
+      <li><strong>ナレーション音声をSpotifyにアップ、手動でプレイリスト作成</strong></li>
+    </ul>
+    <p>
+      なんと！ SpotifyのPodキャストの曲読込機能が終了していた！ 愕然
+      しかたなく、1曲ずつ解説ナレーション音声を作って交互に再生させる方針に変更した。
+      プレイリストで対応。なんかそれらしくなった。
+      Facebookの履歴↓
+    </p>
+
+    <div class="img-box">
+      <img src="images/01_zenya-2025-10-12-15-34-12.png" alt="">
+    </div>
+
+    <h2>よし、本格的にやるか</h2>
+    <p>
+      ひとつずつファイルを作成するのはめんどくさい。
+      しかも自分で聞いて楽しみたいのにあらかじめ内容知ってたら面白くない。
+      最近ヴァイブコーディングとやらが流行ってるらしいし自動化やってみるか？
+      というわけで自動化をしてみようと思い立った。
+    </p>
+
+    <hr>
+
+    <nav>
+    
+      <a href="02_1st_dev.html">次へ（開発のはじまり）</a> →
+    </nav>
+    <div style="text-align:center; margin-top:40px;">
+  <a href="../index.html" 
+     style="display:inline-block; padding:10px 18px; border:1px solid #4a5a78;
+            border-radius:6px; color:#0366d6; text-decoration:none;
+            background:#f9fafb; font-size:0.9rem;">
+    ▲ トップへ戻る
+  </a>
+</div>
+
+  </main>
+</body>
+</html>

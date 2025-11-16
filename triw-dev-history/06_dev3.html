@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>6. 仕切り直しからの一気に作成（8月10日） - Project TRIW 開発記録</title>
+
+  <style>
+    body {
+      font: 16px/1.7 system-ui, -apple-system, "Segoe UI", Roboto,
+            "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      margin: 24px;
+      background: #fff;
+      color: #222;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.3rem; margin-top: 2rem; }
+    hr { margin: 1.5rem 0; }
+    p { margin: 0 0 1em; }
+    ul { padding-left: 1.4rem; margin: 0 0 1em; }
+    li { margin-bottom: 0.3em; }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .img-box {
+      border: 1px solid #4a5a78;
+      padding: 4px;
+      margin: 8px 0 24px;
+    }
+
+    nav {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    nav a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main>
+
+    <h1>6. 仕切り直しからの一気に作成（8月10日）</h1>
+
+    <h2>思い切って完全仕切り直し</h2>
+    <p>
+      わけがわからなくなったので改修はやめ、思い切って一から作り直すことにしました。
+      いままでなんとなく進めていましたが、それがぐちゃぐちゃになる原因だったと思います。
+      そこで <b>最初に要件を整理</b> させて、やるべきことをちゃんと決めてから開発していくことにしました。
+    </p>
+
+    <div class="img-box"><img src="images/06_dev3-2025-10-13-10-02-11.png" alt=""></div>
+
+    <p>今度は拡張性も意識して作ってねと頼んでみたら、ざっくりフェーズを切ってくれた。</p>
+    <div class="img-box"><img src="images/06_dev3-2025-10-13-10-19-20.png" alt=""></div>
+    <div class="img-box"><img src="images/06_dev3-2025-10-13-10-20-08.png" alt=""></div>
+
+    <p>
+      すぐに進めたがるChatGPTをなだめながらやるべきことを決めていきます。
+      でないと勝手にどんどん進めちゃう。
+      AIとの開発で、私がやるべきことはマネージメントなんだなとこのへんでなんとなく認識し始めます。
+    </p>
+
+    <p>
+      しつこく納得するまでやりたいことを細かく伝え、
+      それをどうやったら実現できるかをコードを出さずに説明させるというのをしっかりやりました。
+      日をまたいでもまだやってたらしい。
+    </p>
+
+    <div class="img-box"><img src="images/06_dev3-2025-10-13-10-49-05.png" alt=""></div>
+    <div class="img-box"><img src="images/06_dev3-2025-10-13-10-49-55.png" alt=""></div>
+    <div class="img-box"><img src="images/06_dev3-2025-10-13-10-50-27.png" alt=""></div>
+
+    <p>
+      めちゃめちゃ用心深くやって、マークダウンにして保存までした。
+      正直細かいところはわからないところもあったけど。
+      固定スキーマとかよくわからん。でも大枠でよかろう。
+    </p>
+
+    <h2>一気にSpotify情報を取ってきてTTSまで</h2>
+    <p>
+      さてここからは一気に作っていきます。
+      しかしあんなに要件整理したのに、結局ディレクトリがずれたりとか認証とかでけっこうはまる。
+      なにかあると頻繁にコードの部分差し替えを指定してくる。これがはまる原因になった。
+      だいたい人間が貼るところを間違ったりする。
+      あと人間がわかってなくてバカなので、あとからみるとバカすぎてAIかわいそう。
+    </p>
+
+    <div class="img-box"><img src="images/06_dev3-2025-10-13-11-03-09.png" alt=""></div>
+
+    <p>
+      忍耐強いAIのおかげでなんとかいったん動くものができました。こんな流れです。
+    </p>
+    <ol>
+      <li>Spotify認証</li>
+      <li>Spotifyのプレイリスト（すでにあるもの）を指定</li>
+    </ol>
+
+    <div class="img-box"><img src="images/06_dev3-2025-10-12-21-09-42.png" alt=""></div>
+    <p>（これがもとのプレイリストですね）</p>
+    <div class="img-box"><img src="images/06_dev3-2025-10-12-21-10-21.png" alt=""></div>
+
+    <ol start="3">
+      <li>すでにあるプレイリストを取ってきて（Spotify API）Webページ上に曲名とアーティスト名のリストを表示</li>
+      <li>それぞれの曲のボタンを押すと ChatGPT API が裏で曲紹介ナレーションテキスト原稿を生成</li>
+      <li>テキストをTTSになげてナレーション音声作成</li>
+      <li>表で曲とナレーション原稿を再生</li>
+    </ol>
+
+    <p>こういうのができました！画面です。</p>
+    <div class="img-box"><img src="images/06_dev3-2025-10-12-21-09-57.png" alt=""></div>
+
+    <p>
+      ひととおりの流れができた！　これには感激しました。
+      いろいろ詰まったといっても、わずか2日程度だ。
+      このときはこの勢いで進めたらもうすぐアプリなんてできちゃうんじゃん！？という
+      めちゃめちゃ明るい未来が広がっていたのでした。のど元過ぎればなんとやらです。
+    </p>
+
+    <hr>
+
+    <nav>
+      ← <a href="05_dev2.html">前へ（Spotify連携の壁）</a>　|　
+      <a href="07_dev4.html">次へ（開発フェーズ4）</a> →
+    </nav>
+<div style="text-align:center; margin-top:40px;">
+  <a href="../index.html" 
+     style="display:inline-block; padding:10px 18px; border:1px solid #4a5a78;
+            border-radius:6px; color:#0366d6; text-decoration:none;
+            background:#f9fafb; font-size:0.9rem;">
+    ▲ トップへ戻る
+  </a>
+</div>
+
+  </main>
+</body>
+</html>
